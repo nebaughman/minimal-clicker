@@ -1,6 +1,14 @@
 /*
  * Service Worker
+ *
+ * This service worker interprets commands posted from the browser-side
+ * and signals when State has been updated. Notice that all messages to/from
+ * service workers are serialized. So, the worker cannot update the application
+ * state directly. Instead, Engine.ts receives state updates and syncs that up
+ * with the application state.
  */
+
+// TODO: TypeScript
 
 import {State} from "./State"
 

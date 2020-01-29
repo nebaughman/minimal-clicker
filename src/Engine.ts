@@ -3,6 +3,12 @@ import {State} from "./State"
 //@ts-ignore
 import Worker from "worker-loader!./Engine.worker.js"
 
+/**
+ * This class runs a Worker and maintains State.
+ * Engine acts as a facade to proxy events to/from the Worker.
+ * Primarily, when the Worker posts new State, the local State instance is updated,
+ * allowing components to react to the change in state.
+ */
 export class Engine {
 
   private readonly worker = new Worker()
