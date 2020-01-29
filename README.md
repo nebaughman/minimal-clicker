@@ -2,6 +2,10 @@
 
 Maybe almost the most minimal clicker game ever - produce as many units as you can!
 
+[**&rarrtl; Play Right Now &rarrtl;**](https://nebaughman.github.io/minimal-clicker)
+
+## Overview
+
 * **What:** The purpose of this project is to experiment with a Service Worker in a vue-cli project (with TypeScript).
 
 * **How:** See `Engine.ts`, which acts as a proxy to the service worker `Engine.worker.js`. The application can call methods of `Engine.ts` to post commands to the worker. The worker posts state updates to `Engine.ts`, which updates application State.

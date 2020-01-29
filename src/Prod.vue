@@ -1,5 +1,5 @@
 <template>
-  <div class="stage">
+  <div>
     <h1>Production</h1>
 
     <p>Running: {{ !paused }}</p>
@@ -53,7 +53,4 @@
 </script>
 
 <style scoped>
-  .stage {
-    margin: 64px;
-  }
 </style>
