@@ -28,9 +28,7 @@ Maybe almost the most minimal clicker game ever - produce as many units as you c
 
 Aside from standard vue-cli project, added the following for service worker support:
 
-* `yarn add worker-loader`
-
-   > Maybe that should be: `yarn add --dev worker-loader`
+* `yarn add --dev worker-loader`
 
 Also notice that I tried several configurations in `vue.config.js` to allow `*.worker.js` files to be loaded by worker-loader during the webpack process. None of this worked. The answer was to simply load workers explicitly: 
 
