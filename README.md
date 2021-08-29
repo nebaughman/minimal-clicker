@@ -46,8 +46,8 @@ import Worker from "worker-loader!./worker.js"
 - For GitHub Pages hosting:
   - Run `yarn build` to produce `dist`
   - Remove old `docs` & move `dist` to `docs`
-  - Remove `docs/js/*.map` sourcemaps (unneeded in repo)
-  - In `docs` run `http-server` to see if distribution works
+  - Remove all `*.map` sourcemaps within `docs` (unneeded in repo)
+  - Run `http-server` in `docs` to see if distribution works
 - `git commit -am "vX.Y.Z"`
 - `git checkout master && git merge develop && git tag X.Y.Z` # no `v`
 - `git push --all && git push --tags`
