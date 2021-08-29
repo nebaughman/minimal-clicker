@@ -1,5 +1,5 @@
 /**
- * App state.unitsPerSec
+ * App State
  *
  * - main.ts creates a State (this.$state) and Engine (this.$engine) for app components
  * - Components can react to State changes, and signal Engine with commands

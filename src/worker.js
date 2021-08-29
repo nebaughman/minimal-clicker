@@ -1,7 +1,7 @@
 /*
- * Service Worker
+ * Web Worker
  *
- * This service worker interprets commands posted from the browser-side
+ * This Web Worker interprets commands posted from the browser-side
  * and signals when State has been updated. Notice that all messages to/from
  * service workers are serialized. So, the worker cannot update the application
  * state directly. Instead, Engine.ts receives state updates and syncs that up
@@ -17,6 +17,7 @@ const state = new State() // local state
 const rate = 40 // ms per update cycle
 // TODO: sample actual rate, adjust this if getting behind
 
+// TODO: use animation timer
 const timer = setInterval(() => updateState(1000 / rate), rate)
 
 /**
@@ -35,10 +36,10 @@ function postState() { // TODO: consider watcher
 onmessage = (event) => {
   const data = event.data // payload from host
   //console.log("Worker received", data) // TODO: loglevel
-  if (data.type === "update") {
-    Object.assign(state, data.state)
-  } else if (data.type === "command") {
-    if (data.command === "incrementUnitsPerSec") {
+  if (data.type === "command") {
+    if (data.command === "reset") {
+      Object.assign(state, new State())
+    } if (data.command === "incrementUnitsPerSec") {
       state.unitsPerSec++
     } else if (data.command === "togglePause") {
       state.paused = !state.paused // TODO: cancel/create interval

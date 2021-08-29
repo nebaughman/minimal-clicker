@@ -1,7 +1,7 @@
 import {State} from "./State"
 
 //@ts-ignore
-import Worker from "worker-loader!./Engine.worker.js"
+import Worker from "worker-loader!./worker.js"
 
 /**
  * This class runs a Worker and maintains State.
@@ -14,7 +14,7 @@ export class Engine {
   private readonly worker = new Worker()
 
   constructor(
-    private readonly state: State,
+    private readonly state: State, // instance of State to sync with worker
   ) {
     this.worker.onmessage = (event: any) => this.handleEvent(event)
   }
@@ -32,10 +32,11 @@ export class Engine {
     }
   }
 
+  reset() {
+    this.command("reset")
+  }
+
   incrementUnitsPerSec() {
-    //this.updateState({
-    //  unitsPerSec: this.state.unitsPerSec + 1
-    //})
     this.command("incrementUnitsPerSec")
   }
 
@@ -43,20 +44,10 @@ export class Engine {
     this.command("togglePause")
   }
 
-  reset() {
-    this.updateState(new State())
-  }
-
   private command(command: any) {
-    this.post({ type: "command", command })
+    this.worker.postMessage({
+      type: "command",
+      command,
+    })
   }
-
-  private updateState(state: any) {
-    this.post({ type: "update", state })
-  }
-
-  private post(msg: any) {
-    this.worker.postMessage(msg)
-  }
-
 }
