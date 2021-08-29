@@ -1,20 +1,19 @@
 <template>
-  <div class="msg" :class="msgClass">
-    <a href="https://github.com/nebaughman/minimal-clicker">
-      <slot>GitHub project</slot> &rarrtl;
-    </a>
-  </div>
+  <span class="msg" :class="msgClass"><slot/></span>
 </template>
 
 <script>
   export default {
-    computed: {
-      units() {
-        return this.$state.units
+    props: {
+      visible: {
+        type: Boolean,
+        default: true,
       },
+    },
 
+    computed: {
       msgClass() {
-        return this.units >= 10 ? "msg-visible" : false;
+        return this.visible ? "msg-visible" : "msg-hidden";
       },
     },
   }
@@ -22,21 +21,16 @@
 
 <style scoped>
   .msg {
-    margin-top: 32px;
+    transition: opacity 1000ms;
+  }
+
+  .msg-hidden {
+    visibility: hidden;
     opacity: 0;
   }
 
   .msg-visible {
+    visibility: visible;
     opacity: 1;
-    transition: opacity 1000ms;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  a:hover {
-    text-shadow: 1px 1px 3px #ccc;
   }
 </style>

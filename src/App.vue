@@ -1,16 +1,19 @@
 <template>
   <div id="app">
+    <h1>Minimal Clicker</h1>
     <prod/>
     <msg/>
+    <lv/>
   </div>
 </template>
 
 <script>
-  import Prod from "./Prod"
-  import Msg from "./Msg"
+  import Prod from "./Prod.vue"
+  import Msg from "./Msg.vue"
+  import Lv from "./Lv.vue"
 
   export default {
-    components: {Prod,Msg},
+    components: {Prod,Msg,Lv},
   }
 </script>
 

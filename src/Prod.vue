@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Production</h1>
+    <h2>Production</h2>
 
     <p>Running: {{ !paused }}</p>
     <p>Units per second: {{ unitsPerSec }}</p>
